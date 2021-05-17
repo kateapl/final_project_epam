@@ -1,0 +1,14 @@
+body {
+    display: flex;
+    align-items: center;
+    flex-flow: column wrap;
+}
+
+div.button_panel{
+    align-items: center;
+    margin-bottom: 1%;
+}
+
+div.containers{
+    flex-flow: row wrap;
+}
