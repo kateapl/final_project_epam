@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="{% static 'executor/styles.css' %}">
 </head>
-<body>
+<body style="background-image: url('{% static "executor/background.jpg" %}'); background-size:100%;">
     <h1>Executor for python code</h1>
     <main>
         <div class="button_panel">
@@ -17,12 +17,12 @@
                 {{ form.code }}
                 {{ form.input }}
                 <br>
-                <button type="submit" class="btn btn-primary">Launch</button>
+                <button type="submit" class="btn btn-dark">Launch</button>
             </form>
         </div>
         <div class="containers">
-            <p><textarea name="output" placeholder="There will be output">{{output}}</textarea></p>
-            <p><textarea name="err" placeholder="There will be errors">{{error}}</textarea></p>
+            <textarea name="output" placeholder="There will be output">{% for line in output %}{{ line }}{% endfor %}</textarea>
+            <textarea name="err" placeholder="There will be errors">{{error}}</textarea>
         </div>
     </main>
 </body>

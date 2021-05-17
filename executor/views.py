@@ -4,7 +4,7 @@ from django.http import HttpResponse
 
 
 def get_program_input(request):
-    sdout = ""
+    sdout = []
     sderr = ""
     if request.method == 'POST':
         form = forms.CodeInputForm(request.POST)

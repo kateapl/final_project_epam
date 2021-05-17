@@ -22,10 +22,7 @@ def extract_data(query: str) -> str:
 
 
 def execution(form):
-    """test_text = str(input("Введите число: "))
-    test_number = int(test_text)
-    print ("Введенное число: ", test_number)
-    """
+
     loc ={
     "_print_" : SafePrintCollector,
     "_getattr_": getattr
@@ -48,10 +45,10 @@ def execution(form):
     except Exception as error:
         with open('log.txt', 'a') as f:
             f.write(str(error))
-        return "", str(error)
+        return [], str(error)
 
-    result = str(loc['_print'].txt)
+    result = loc['_print'].txt
     with open('log.txt', 'a') as f:
-        f.write(result)
+        f.write(str(result))
     loc['_print'].txt = []
     return result, ""
