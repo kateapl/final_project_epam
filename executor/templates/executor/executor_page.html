@@ -1,0 +1,29 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Python executor</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'executor/styles.css' %}">
+</head>
+<body>
+    <h1>Executor for python code</h1>
+    <main>
+        <div class="button_panel">
+            <form method="post">
+                {% csrf_token %}
+                {{ form.code }}
+                {{ form.input }}
+                <br>
+                <button type="submit" class="btn btn-primary">Launch</button>
+            </form>
+        </div>
+        <div class="containers">
+            <p><textarea name="output" placeholder="There will be output">{{output}}</textarea></p>
+            <p><textarea name="err" placeholder="There will be errors">{{error}}</textarea></p>
+        </div>
+    </main>
+</body>
+</html>
