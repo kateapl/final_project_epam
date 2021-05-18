@@ -19,12 +19,12 @@ class SafePrintCollector(PrintCollector):
 
 
 def extract_data(query: str) -> str:
-    return query.split(sep=">")[1].split(sep="<")[0].replace("&quot;", '"')
-
+    return query.split(sep=">")[1].split(sep="<")[0].replace("&quot;", '"').replace("&#x27", "'")
 _print_ = SafePrintCollector
 def execution(form):
+    "['Hello outer world!', '\n', 'Hello inner world!', '\n', 'None', '\n']"
     loc ={
-    "_print_" : SafePrintCollector,
+    "_print_": SafePrintCollector,
     "_getattr_": getattr
     }
     safe_builtins["input"] = getattr(builtins, "input")
@@ -46,9 +46,10 @@ def execution(form):
         with open('log.txt', 'a') as f:
             f.write(str(error))
         return [], str(error)
+    try:
+        result = loc['_print'].txt
+    except KeyError as error:
+        return [], "Nothing is printed"
 
-    result = loc['_print'].txt
-    with open('log.txt', 'a') as f:
-        f.write(str(result))
     loc['_print'].txt = []
     return result, ""

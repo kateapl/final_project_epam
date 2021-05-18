@@ -32,7 +32,6 @@ ALLOWED_HOSTS = ['*']
 
 INSTALLED_APPS = [
     'executor',
-    'django_pygments',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

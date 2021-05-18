@@ -1,6 +1,5 @@
 from django.shortcuts import render
 from . import forms, program_execution
-from django.http import HttpResponse
 
 
 def get_program_input(request):
