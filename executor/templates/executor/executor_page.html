@@ -10,8 +10,10 @@
 </head>
 <body style="background-image: url('{% static "executor/background.jpg" %}'); background-size:100%;">
     <h1>Executor for python code</h1>
+
     <main>
         <div class="button_panel">
+            <pre lang=”python”>
             <form method="post">
                 {% csrf_token %}
                 {{ form.code }}
@@ -19,6 +21,7 @@
                 <br>
                 <button type="submit" class="btn btn-dark">Launch</button>
             </form>
+            </pre>
         </div>
         <div class="containers">
             <textarea name="output" placeholder="There will be output">{% for line in output %}{{ line }}{% endfor %}</textarea>
