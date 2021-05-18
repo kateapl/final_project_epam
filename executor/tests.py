@@ -1,6 +1,7 @@
 from django.test import TestCase
 from django.test.client import Client
-from . import program_execution, forms
+
+from . import forms, program_execution
 
 
 class FinalProjectTests(TestCase):
@@ -49,13 +50,13 @@ print(eval(code, {}, {}))"""
         data = {"code": self.print_code_out_and_in, "input": ""}
         form = forms.CodeInputForm(data=data)
         result = program_execution.execution(form)
-        assert result == (['Hello outer world!', '\n', 'Hello inner world!', '\n'], "")
+        assert result == (["Hello outer world!", "\n", "Hello inner world!", "\n"], "")
 
     def test_print_code_with_input(self):
         data = {"code": self.print_code_with_input, "input": "42"}
         form = forms.CodeInputForm(data=data)
         result = program_execution.execution(form)
-        assert result == (['Input: ', ' ', '42', "\n"], "")
+        assert result == (["Input: ", " ", "42", "\n"], "")
 
     def test_os_import_error(self):
         data = {"code": self.os_import_error, "input": "42"}
